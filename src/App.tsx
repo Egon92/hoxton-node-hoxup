@@ -6,20 +6,20 @@ import Login from "./pages/Login";
 import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 
+export type CurrentUser = {
+  firstName: string;
+  lastName: string;
+  phoneNumber: string;
+  avatar: string;
+  id: number;
+};
+
+export type Users = CurrentUser[];
+
 export default function App() {
   const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
   const [modal, setModal] = useState("");
   const [users, setUsers] = useState([]);
-
-  type CurrentUser = {
-    firstName: string;
-    lastName: string;
-    phoneNumber: string;
-    avatar: string;
-    id: number;
-  };
-
-  type Users = [user: CurrentUser];
 
   useEffect(() => {
     fetch("http://localhost:4000/users")

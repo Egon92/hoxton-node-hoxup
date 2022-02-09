@@ -15,6 +15,7 @@ function Conversation({ currentUser }: Props) {
   function createMessage(text: string) {
     // create a message on the server ✅
 
+    if (currentUser === null) return;
     fetch("http://localhost:4000/messages", {
       method: "POST",
       headers: {
